@@ -1,0 +1,85 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+tr {
+    background-color: white;
+}
+
+thead tr {
+    background-color: #282c34;
+    color: #61dafb;
+}
+
+tr:nth-child(even) {
+    background-color: #d9d9d9;
+}
+
+th,
+td {
+    padding: 6px;
+    text-align: center;
+}
+
+td button {
+    margin: 0;
+    background: none;
+    color: initial;
+    display: inline;
+    padding: 5px 8px;
+    border-radius: 50%;
+    width: initial;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.remove,
+.edit {
+    margin: 0;
+    transition: 0.3s;
+    cursor: pointer;
+    background: none;
+    width: initial;
+}
+
+.remove:hover,
+.edit:hover {
+    scale: 1.5;
+}
+
+.remove {
+    color: #721e1e;
+}
+
+.edit {
+    color: #251e72;
+}
+
+tr td:last-child {
+    white-space: nowrap;
+}
+
+.returnLink a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #61dafb;
+}
+
+button.returnLink {
+    margin: 10px 0 0 0;
+    width: initial;
+    font-size: 1em;
+    background: #282c34;
+}
+
+button.returnLink svg {
+    position: relative;
+    top: 3px;
+    right: -2px;
+}
+
+.returnLink:hover a {
+    text-decoration: underline;
+}
