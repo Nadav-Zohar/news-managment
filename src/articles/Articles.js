@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Articles.css";
 import moment from 'moment';
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { GeneralContext } from "../App";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export default function Articles(){
     const [articles, setArticles]= useState([]);
+    const {setIsLoader}= useContext(GeneralContext);
+    const navigate= useNavigate();
 
     useEffect(() => {
         fetch(`https://api.shipap.co.il/articles`, {
@@ -14,7 +18,6 @@ export default function Articles(){
         .then(res => res.json())
         .then(data => {
             setArticles(data);
-            console.log(data);
         });
     }, []);
 
@@ -23,20 +26,22 @@ export default function Articles(){
             return;
         }
 
-        fetch(`https://api.shipap.co.il/articles/:id`, {
+        setIsLoader(true);
+        fetch(`https://api.shipap.co.il/articles/${id}`, {
             credentials: 'include',
             method: 'DELETE',
         })
         .then(() => {
             setArticles(articles.filter(x => x.id !== id));
+            setIsLoader(false);
         });
     }
-
-
     
     return(
         <>
-<table>
+        <button className='addBtn' onClick={() => navigate('/article/new')}>Add Article +</button>
+
+        <table>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -50,15 +55,17 @@ export default function Articles(){
                 <tbody>
                     {
                         articles.map((a, i) => 
-                            <tr key={a.id}>
+                            <tr key={a.id} onDoubleClick={() => navigate(`/article/${a.id}`)}>
                                 <td>{i + 1}</td>
                                 <td>{a.headline}</td>
                                 <td>{moment(a.addedTime).format('DD/MM/YY')}</td>
                                 <td>{moment(a.publishDate).format('DD/MM')}</td>
                                 <td>{a.views}</td>
                                 <td>
-                                    <button className="edit"><AiFillEdit /></button>
-                                    <button className="remove" onClick={() => removeArticle(a.id)}><AiFillDelete /></button>
+                                <Link to={`/article/${a.id}`}>
+                                    <button className="green"><AiFillEdit /></button>
+                                </Link>
+                                    <button className="red" onClick={() => removeArticle(a.id)}><AiFillDelete /></button>
                                 </td>
                             </tr>
                         )
