@@ -12,12 +12,14 @@ export default function Articles(){
     const navigate= useNavigate();
 
     useEffect(() => {
+        setIsLoader(true);
         fetch(`https://api.shipap.co.il/articles`, {
             credentials: 'include',
         })
         .then(res => res.json())
         .then(data => {
             setArticles(data);
+            setIsLoader(false);
         });
     }, []);
 
@@ -40,6 +42,7 @@ export default function Articles(){
     return(
         <>
         <button className='addBtn' onClick={() => navigate('/article/new')}>Add Article +</button>
+        <button className='addBtn' onClick={() => navigate('/recyclebean')}>Recycle Bean</button>
 
         <table>
                 <thead>
