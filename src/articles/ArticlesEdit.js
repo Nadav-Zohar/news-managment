@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import './Articles.css';
 import { useContext, useEffect, useState } from 'react';

@@ -8,7 +8,7 @@ export default function Login(){
         password: "",
     });
 
-    const {setUser, setIsLoader, snackbar, setSnackbarText}= useContext(GeneralContext);
+    const {setUser, setIsLoader, snackbar}= useContext(GeneralContext);
     
     const handleInput= ev => {
         const {name, value}= ev.target;
