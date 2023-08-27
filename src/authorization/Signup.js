@@ -58,15 +58,15 @@ export default function Signup(){
                     <input type="text" name='userName' value={formData.userName} onChange={handelInput} />
                 </label>
                 <label>
-                    Password:
+                    Password :
                     <input type="password" name='password' value={formData.password} onChange={handelInput} />
                 </label>
                 <label>
-                    Email:
+                    Email :
                     <input type="email" name='email' value={formData.email} onChange={handelInput} />
                 </label>
                 <label>
-                    Full Name:
+                    Full Name :
                     <input type="text" name='fullName' value={formData.fullName} onChange={handelInput} />
                 </label>
                 <button onClick={() => navigate("/")}>Sign Up</button>

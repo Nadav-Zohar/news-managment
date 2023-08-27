@@ -63,11 +63,11 @@ export default function Login(){
 
             <form onSubmit={login}>
                 <label>
-                    User Name:
+                    User Name :
                     <input type="text" name="userName" value={formData.userName} onChange={handleInput} />
                 </label>
                 <label>
-                    Password:
+                    Password :
                     <input type="password" name="password" value={formData.password} onChange={handleInput} />
                 </label>
                 <button>Log-In</button>
