@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { GeneralContext } from "../App";
 import Snackbar from "../components/Snackbar";
+import { useNavigate } from "react-router-dom";
 
 export default function Login(){
     const [formData, setFormData]= useState({
@@ -9,6 +10,7 @@ export default function Login(){
     });
 
     const {setUser, setIsLoader, snackbar}= useContext(GeneralContext);
+    const navigate= useNavigate();
     
     const handleInput= ev => {
         const {name, value}= ev.target;
@@ -68,10 +70,11 @@ export default function Login(){
                     Password:
                     <input type="password" name="password" value={formData.password} onChange={handleInput} />
                 </label>
-
                 <button>Log-In</button>
-                
             </form>
+            <p className="signup">
+                <a onClick={() => navigate("/signup") }>To Sign Up Press Here</a>
+            </p>
         </div>
     )
 }
