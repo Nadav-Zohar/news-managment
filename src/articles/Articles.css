@@ -30,7 +30,6 @@ td button {
     display: inline;
     padding: 5px 8px;
     border-radius: 50%;
-    width: initial;
     cursor: pointer;
     transition: 0.3s;
 }
